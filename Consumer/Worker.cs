@@ -17,7 +17,13 @@ namespace Consumer
 
         public override Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation($"Comsumers Service Start At {DateTime.Now} ...");
+            string msg = $"Comsumers Service Start At {DateTime.Now}";
+
+            Console.WriteLine(msg);
+            Console.WriteLine("Application started. Press Ctrl+C to shut down.");
+
+            _logger.LogInformation(msg);
+
             return base.StartAsync(cancellationToken);
         }
 

@@ -12,7 +12,6 @@ namespace Logger
         public string Url { get; set; }
         public ERunningStatus? Status { get; set; }
         public Exception Exception { get; set; }
-        public string ConsumerType { get; set; }
     }
 
     public enum ERunningStatus

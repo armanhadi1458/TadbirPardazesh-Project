@@ -25,10 +25,6 @@ namespace PersonProducer
                 {
                     IConfiguration configuration = hostContext.Configuration;
 
-                    Log.Logger = new LoggerConfiguration()
-                        .ReadFrom.Configuration(configuration)
-                        .CreateLogger();
-
                     services.AddMassTransit(x =>
                     {
                         var rabbitConfig = configuration.GetSection(RabbitConfiguration.Name).Get<RabbitConfiguration>();

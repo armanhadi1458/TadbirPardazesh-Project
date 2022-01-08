@@ -53,7 +53,6 @@ namespace Consumer.Observer
             _logger.LogInfo(new UserRequestProperties()
             {
                 LogMessage = $"Message consume start in {context.ReceiveContext.InputAddress.AbsoluteUri}",
-                ConsumerType = consumerType,
                 Duration = duration.ToString(),
                 MessageBody = body,
                 Status = ERunningStatus.Running,
@@ -71,7 +70,6 @@ namespace Consumer.Observer
             _logger.LogError(new UserRequestProperties()
             {
                 LogMessage = $"Message consume failed in {context.ReceiveContext.InputAddress.AbsoluteUri}",
-                ConsumerType = consumerType,
                 Duration = elapsed.ToString(),
                 MessageBody = body,
                 Status = ERunningStatus.Failed,

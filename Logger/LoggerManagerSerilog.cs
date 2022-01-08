@@ -3,7 +3,7 @@ using System;
 
 namespace Logger
 {
-    public class LoggerManager : ILoggerManager
+    public class LoggerManagerSerilog : ILoggerManager
     {
         public void LogDebug(string message)
         {
@@ -58,7 +58,6 @@ namespace Logger
                    .ForContext("Response", request.Response)
                    .ForContext("Status", request.Status)
                    .ForContext("Url", request.Url)
-                   .ForContext("ConsumerType", request.ConsumerType)
                    .Information(request.LogMessage);
             }
             catch (Exception ex)
@@ -81,7 +80,6 @@ namespace Logger
                     .ForContext("Response", request.Response)
                     .ForContext("Status", request.Status)
                     .ForContext("Url", request.Url)
-                    .ForContext("ConsumerType", request.ConsumerType)
                     .ForContext("Exception", exception)
                     .Error(request.Exception, request.LogMessage);
             }
@@ -121,7 +119,6 @@ namespace Logger
                    .ForContext("Response", request.Response)
                    .ForContext("Status", request.Status)
                    .ForContext("Url", request.Url)
-                   .ForContext("ConsumerType", request.ConsumerType)
                    .ForContext("Exception", exception)
                    .Warning(request.Exception, request.LogMessage);
             }

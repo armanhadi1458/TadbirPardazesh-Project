@@ -25,7 +25,7 @@ namespace Consumer
                         .ReadFrom.Configuration(configuration)
                         .CreateLogger();
 
-                    services.AddTransient<ILoggerManager, LoggerManager>();
+                    services.AddTransient<ILoggerManager, LoggerManagerSerilog>();
 
                     services.AddInfrastructure(configuration);
                     services.AddApplication(configuration);
