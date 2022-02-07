@@ -43,6 +43,7 @@ namespace Consumer
 
                     cfg.UseConsumeFilter(typeof(MessageValidatorFilter<>), context);
                     
+                    //uncomment for use retry exception
                     //cfg.UseMessageRetry(x =>
                     //{
                     //    x.Interval(3, TimeSpan.FromMilliseconds(1000));
