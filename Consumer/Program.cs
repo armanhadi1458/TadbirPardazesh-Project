@@ -32,7 +32,7 @@ namespace Consumer
                     services.AddTransient<ILoggerManager, LoggerManagerSerilog>();
 
                     services.AddFluentValidation();
-                    services.AddTransient<IValidator<CreatePersonNotification>, CreatePersonNotificationValidator>();
+                    services.AddValidatorsFromAssembly(typeof(CreatePersonNotificationValidator).Assembly);
 
                     services.AddInfrastructure(configuration);
                     services.AddApplication(configuration);
