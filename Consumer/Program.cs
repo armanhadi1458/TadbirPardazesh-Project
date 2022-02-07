@@ -5,6 +5,10 @@ using Application;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 using Logger;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using Application.Person.Notifications;
+using Application.Person.ValidationModel;
 
 namespace Consumer
 {
@@ -26,6 +30,9 @@ namespace Consumer
                         .CreateLogger();
 
                     services.AddTransient<ILoggerManager, LoggerManagerSerilog>();
+
+                    services.AddFluentValidation();
+                    services.AddTransient<IValidator<CreatePersonNotification>, CreatePersonNotificationValidator>();
 
                     services.AddInfrastructure(configuration);
                     services.AddApplication(configuration);

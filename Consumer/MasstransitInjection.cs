@@ -1,4 +1,5 @@
 ﻿using Application.Person.NotificationHandlers;
+using Consumer.Filter;
 using Consumer.Middleware.CustomeLogging;
 using Core.Dto;
 using GreenPipes;
@@ -40,10 +41,12 @@ namespace Consumer
                         e.ConfigureConsumer<CreatePersonRedisNotificationHandler>(context);
                     });
 
-                    cfg.UseMessageRetry(x =>
-                    {
-                        x.Interval(3, TimeSpan.FromMilliseconds(1000));
-                    });
+                    cfg.UseConsumeFilter(typeof(MessageValidatorFilter<>), context);
+                    
+                    //cfg.UseMessageRetry(x =>
+                    //{
+                    //    x.Interval(3, TimeSpan.FromMilliseconds(1000));
+                    //});
 
                     //using my custome middleware for loging and exception handling
                     //better approch because request first recieve in middleware

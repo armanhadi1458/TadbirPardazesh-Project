@@ -42,6 +42,14 @@ namespace PersonProducer
                     LastName = $"lastName_{personPrefix}"
                 };
 
+                //for debug validation uncomment this and comment above code
+                //var person = new CreatePersonNotification()
+                //{
+                //    Age = 10,
+                //    FirstName = "",
+                //    LastName = ""
+                //};
+
                 await _busControl.Publish(person);
 
                 Console.WriteLine($"Message Published \n Person : {JsonSerializer.Serialize(person, JsonSerializerSetting.JsonSerializerOptions)}");
