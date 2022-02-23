@@ -35,7 +35,7 @@ namespace Consumer.Filter
 
                 //send message to custom queue or throw exception for publish message to error queue or both or only return
                 await context.Send(
-                    destinationAddress: new Uri($"queue:{KebabCaseEndpointNameFormatter.Instance.SanitizeName(typeof(T).Name)}-validation-errors"),
+                    destinationAddress: new Uri($"queue:{new ExchangeNameFormatter().GenerateStandardClassName(typeof(T))}_validation_errors"),
                     message: new ValidationResultMessage<T>(context.Message, validationResult)
                 );
 

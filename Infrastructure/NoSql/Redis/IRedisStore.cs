@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.NoSql.Redis
 {
-    public interface IRedisStore<TObject> where TObject : Core.Models.Base.Entity, new()
+    public interface IRedisStore<TObject> where TObject : class, new()
     {
-        Task SetAsync(TObject model);
+        Task Save(string key, TObject model);
+        Task<TObject> GetValue(string key);
+        Task Remove(string key);
     }
 }

@@ -31,15 +31,9 @@ namespace Consumer
                         h.Password(rabbitConfig.Password);
                     });
 
-                    cfg.ReceiveEndpoint(rabbitConfig.PersonSqlQueueName, e =>
-                    {
-                        e.ConfigureConsumer<CreatePersonSqlNotificationHandler>(context);
-                    });
+                    cfg.ConfigureEndpoints(context);
 
-                    cfg.ReceiveEndpoint(rabbitConfig.PerosnRedisQueueName, e =>
-                    {
-                        e.ConfigureConsumer<CreatePersonRedisNotificationHandler>(context);
-                    });
+                    cfg.MessageTopology.SetEntityNameFormatter(new ExchangeNameFormatter());
 
                     cfg.UseConsumeFilter(typeof(MessageValidatorFilter<>), context);
                     

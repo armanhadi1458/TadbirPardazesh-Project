@@ -1,0 +1,6 @@
+﻿CREATE PROCEDURE [dbo].[Person_FindById]
+	@Id UNIQUEIDENTIFIER
+AS
+BEGIN
+	SELECT * FROM People WHERE Id = @Id
+END

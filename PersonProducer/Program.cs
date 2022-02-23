@@ -38,6 +38,8 @@ namespace PersonProducer
                                 h.Password(rabbitConfig.Password);
                             });
 
+                            cfg.ConfigureEndpoints(context);
+                            cfg.MessageTopology.SetEntityNameFormatter(new ExchangeNameFormatter());
                         });
                     });
 

@@ -20,7 +20,7 @@ namespace Application.Person.NotificationHandlers
         public async Task Consume(ConsumeContext<CreatePersonNotification> context)
         {
             var person = _mapper.Map<Core.Models.Person>(context.Message);
-            await _redisStore.SetAsync(person);
+            await _redisStore.Save($"person:{person.Id}", person);
         }
     }
 }

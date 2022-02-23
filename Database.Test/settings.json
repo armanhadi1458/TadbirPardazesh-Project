@@ -1,0 +1,8 @@
+{
+  "DapperTesting": {
+    "ConnectionString": "Data Source=.;Initial Catalog=TadbirPardazesh_Test;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True"
+  },
+  "RedisTesting": {
+    "ConnectionString": "redis://localhost:6379?connectTimeout=6000&sendtimeout=3000&receiveTimeout=3000&retryTimeout=2"
+  }
+}
