@@ -11,11 +11,16 @@ namespace Core.Utils
             return GenerateStandardExchangeName(entityType);
         }
 
-        private string GenerateStandardExchangeName(Type entityType)
+        public string GenerateStandardClassName(Type entityType)
         {
             return entityType.IsInterface && entityType.Name.StartsWith('I') ?
-                $"{entityType.Namespace}.{entityType.Name.Remove(0, 1)}" :
-                entityType.FullName;
+                    entityType.Name.Remove(0, 1) :
+                    entityType.Name;
+        }
+
+        private string GenerateStandardExchangeName(Type entityType)
+        {
+            return $"{entityType.Namespace}.{GenerateStandardClassName(entityType)}";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Core.Utils;
+using FluentValidation;
 using GreenPipes;
 using Logger;
 using MassTransit;
