@@ -19,7 +19,7 @@ namespace Infrastructure.Test
         [Fact, TestPriority(1)]
         public async Task SetAsync_ShouldSaveTo_Redis()
         {
-            // Arrange
+            //Arrange
             Person person = new Person() { Age = 33, FirstName = "David", LastName = "Broke", Id = Guid.NewGuid() };
             string key = $"peron:{person.Id}";
             //Act

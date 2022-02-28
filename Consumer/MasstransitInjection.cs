@@ -29,14 +29,24 @@ namespace Consumer
                     {
                         h.Username(rabbitConfig.Username);
                         h.Password(rabbitConfig.Password);
+                        //add cluster for rabbit
+                        //h.UseCluster(c =>
+                        //{
+                        //    c.Node("192.168.0.12");
+                        //    c.Node("192.168.0.14");
+                        //});
                     });
 
                     cfg.ConfigureEndpoints(context);
 
                     cfg.MessageTopology.SetEntityNameFormatter(new ExchangeNameFormatter());
 
+                    //add validation filter
                     cfg.UseConsumeFilter(typeof(MessageValidatorFilter<>), context);
-                    
+
+                    //custome serilizer
+                    //cfg.SetMessageSerializer(new CustomeSerilizer());
+
                     //uncomment for use retry exception
                     //cfg.UseMessageRetry(x =>
                     //{
