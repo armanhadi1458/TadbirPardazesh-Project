@@ -2,12 +2,12 @@
 using Consumer.Filter;
 using Consumer.Middleware.CustomeLogging;
 using Core.Dto;
+using Core.Utils;
 using GreenPipes;
 using Logger;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace Consumer
 {

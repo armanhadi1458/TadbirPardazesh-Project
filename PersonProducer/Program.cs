@@ -1,14 +1,9 @@
 using Core.Dto;
-using Logger;
+using Core.Utils;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PersonProducer
 {
@@ -36,7 +31,16 @@ namespace PersonProducer
                             {
                                 h.Username(rabbitConfig.Username);
                                 h.Password(rabbitConfig.Password);
+                                //add cluster for rabbit
+                                //h.UseCluster(c =>
+                                //{
+                                //    c.Node("192.168.0.12");
+                                //    c.Node("192.168.0.14");
+                                //});
                             });
+
+                            //custome serilizer
+                            //cfg.SetMessageSerializer(new CustomeSerilizer());
 
                             cfg.ConfigureEndpoints(context);
                             cfg.MessageTopology.SetEntityNameFormatter(new ExchangeNameFormatter());
