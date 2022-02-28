@@ -28,7 +28,7 @@ namespace Infrastructure.Test.Utils
         /// <summary>
         /// Get TestConfiguration
         /// </summary>
-        public TestConfiguration GetSqlConfiguration()
+        public TestConfiguration GetConfiguration()
         {
             var configuration = new TestConfiguration();
             var iConfigRoot = GetConfigurationRoot();

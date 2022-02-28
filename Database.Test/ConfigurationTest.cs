@@ -25,7 +25,7 @@ namespace Infrastructure.Test
         public void Can_Get_Configuration_Connection()
         {
             ConfigurationHelper helper = new ConfigurationHelper();
-            var configuration = helper.GetSqlConfiguration();
+            var configuration = helper.GetConfiguration();
 
             configuration
                 .Should().NotBeNull("Configuration object cannot be null");

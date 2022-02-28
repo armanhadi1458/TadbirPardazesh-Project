@@ -58,7 +58,7 @@ namespace Infrastructure.Test.Utils
         public TestFixture()
         {
             ConfigurationHelper helper = new ConfigurationHelper();
-            _configuration = helper.GetSqlConfiguration();
+            _configuration = helper.GetConfiguration();
         }
 
         /// <summary>
