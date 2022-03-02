@@ -96,6 +96,19 @@ namespace Infrastructure.Test
             deletedPerson.Should().BeNull();
         }
 
+        [Fact, TestPriority(6)]
+        public async Task Insert_ShouldThrowArgumentException_WhenIdIsEmpty()
+        {
+            // Arrange
+            Person person = new Person() { Age = 33, FirstName = "David", LastName = "Broke", Id = Guid.Empty };
+
+            // Act
+            Func<Task> action = () => _fixture.PersonRepository.InsertPersonAsync(person);
+
+            // Assert
+            await action.Should().ThrowAsync<ArgumentException>().WithMessage("Id");
+        }
+
 
     }
 

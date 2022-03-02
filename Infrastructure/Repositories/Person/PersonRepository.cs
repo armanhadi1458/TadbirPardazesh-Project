@@ -18,6 +18,9 @@ namespace Infrastructure.Repositories.Person
 
         public async Task<Core.Models.Person> InsertPersonAsync(Core.Models.Person person)
         {
+            if (person.Id == Guid.Empty)
+                throw new ArgumentException(nameof(person.Id));
+
             var parameters = new DynamicParameters();
             parameters.Add("@Id", person.Id);
             parameters.Add("@Age", person.Age);
