@@ -2,6 +2,7 @@
 using AutoMapper;
 using Infrastructure.NoSql.Redis;
 using MassTransit;
+using System;
 using System.Threading.Tasks;
 
 namespace Application.Person.NotificationHandlers
@@ -19,7 +20,14 @@ namespace Application.Person.NotificationHandlers
         }
         public async Task Consume(ConsumeContext<CreatePersonNotification> context)
         {
+            if (context?.Message is null)
+                throw new ArgumentNullException(nameof(context.Message));
+
             var person = _mapper.Map<Core.Models.Person>(context.Message);
+
+            if (person == null)
+                throw new ArgumentNullException(nameof(person));
+
             await _redisStore.Save($"person:{person.Id}", person);
         }
     }

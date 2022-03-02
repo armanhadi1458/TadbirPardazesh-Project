@@ -3,7 +3,7 @@ using AutoMapper;
 
 namespace Application.Person
 {
-    class PersonProfile: Profile
+    public class PersonProfile: Profile
     {
         public PersonProfile()
         {
