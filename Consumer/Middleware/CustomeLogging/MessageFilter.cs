@@ -24,14 +24,13 @@ namespace Consumer.Middleware.CustomeLogging
         public async Task Send(ConsumeContext<T> context, IPipe<ConsumeContext<T>> next)
         {
             var logModel = CreateBegginigLogModel(context);
+            _logger.LogInfo(logModel);
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
             try
             {
-                _logger.LogInfo(logModel);
-
                 await next.Send(context);
                 sw.Stop();
 
